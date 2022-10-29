@@ -1,19 +1,17 @@
-package com.codegym.service.blog;
+package com.codegym.repository;
 
 import com.codegym.model.Blog;
 import com.codegym.model.Category;
-import com.codegym.service.IGeneralService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-public interface IBlogService extends IGeneralService<Blog> {
-    Page<Blog> findAll(Pageable pageable);
-
+@Repository
+public interface IBlogRepository extends PagingAndSortingRepository<Blog, Long> {
     Iterable<Blog> findAllByCategory(Optional<Category> category);
-
-    Page<Blog> findAllByTitleContaining(String tittle, Pageable pageable);
-
+    Page<Blog> findAllByTitleContaining(String title, Pageable pageable);
     Page<Blog> findAllByCategory_Id(Long id,Pageable pageable);
 }
