@@ -27,7 +27,7 @@ public class BlogAPIController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Blog> findCustomerById(@PathVariable Long id) {
+    public ResponseEntity<Blog> findBlogById(@PathVariable Long id) {
         Optional<Blog> customerOptional = blogService.findById(id);
         if (!customerOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -36,12 +36,12 @@ public class BlogAPIController {
     }
 
     @PostMapping
-    public ResponseEntity<Blog> saveCustomer(@RequestBody Blog blog) {
+    public ResponseEntity<Blog> saveBlog(@RequestBody Blog blog) {
         return new ResponseEntity<>(blogService.save(blog), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Blog> updateCustomer(@PathVariable Long id, @RequestBody Blog blog) {
+    public ResponseEntity<Blog> updateBlog(@PathVariable Long id, @RequestBody Blog blog) {
         Optional<Blog> blogOptional = blogService.findById(id);
         if (!blogOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -51,7 +51,7 @@ public class BlogAPIController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Blog> deleteCustomer(@PathVariable Long id) {
+    public ResponseEntity<Blog> deleteBlog(@PathVariable Long id) {
         Optional<Blog> blogOptional = blogService.findById(id);
         if (!blogOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
