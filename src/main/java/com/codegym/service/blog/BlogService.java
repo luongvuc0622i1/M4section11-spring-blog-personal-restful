@@ -17,7 +17,7 @@ public class BlogService implements IBlogService {
 
     @Override
     public Iterable<Blog> findAll() {
-        return null;
+        return blogRepository.findAll();
     }
 
     @Override
@@ -26,8 +26,8 @@ public class BlogService implements IBlogService {
     }
 
     @Override
-    public void save(Blog model) {
-        blogRepository.save(model);
+    public Blog save(Blog model) {
+        return blogRepository.save(model);
     }
 
     @Override
